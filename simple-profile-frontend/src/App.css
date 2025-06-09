@@ -1,0 +1,343 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+/* Navbar */
+.navbar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.nav-button {
+  padding: 8px 16px;
+  background-color: #facc15;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #eab308;
+  color: #111;
+}
+
+/* Image Section with Background */
+.image-section {
+  width: 100vw; 
+  height: 400px; 
+  background-image: url('https://media.istockphoto.com/id/1269257066/photo/shot-of-a-desktop-computer-in-the-office-shows-screen-with-mobile-phone-application-design.jpg?s=612x612&w=0&k=20&c=xkeDQzyiHPH5yeGRcVChhcA8lb9e2TdhZ-hpFcMK7fQ=');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; 
+  position: relative;
+}
+
+/* Profile Photo */
+.profile-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid white;
+  object-fit: cover;
+  position: absolute;
+  left: 50%;
+  bottom: -90px;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+}
+
+/* Responsive profile photo smaller on mobile */
+@media (max-width: 600px) {
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+    bottom: -60px;
+  }
+}
+
+/* Details Section */
+.details-section {
+  background: white;
+  color: #222;
+  max-width: 600px;
+  margin: 130px auto 30px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.details-section h1 {
+  margin-top: 0;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.details-section p,
+.details-section h3 {
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.details-section a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+.details-section a:hover {
+  text-decoration: underline;
+}
+
+/* Intro Section */
+.intro-section {
+  background-color: #f9f9f9;
+  color: #333;
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.intro-section h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.intro-section p {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Projects horizontal scrolling track */
+.project-track-wrapper {
+  width: 70%;
+  max-width: 800px;
+  margin: 60px auto 0;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.project-track {
+  display: flex;
+  gap: 60px;
+  animation: scroll-left 30s linear infinite;
+  align-items: center;
+  width: fit-content;
+  will-change: transform;
+  animation-play-state: running;
+}
+
+.project-track:hover {
+  animation-play-state: paused;
+}
+
+.project-track img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-track img:hover {
+  transform: scale(1.1);
+}
+
+/* Project description box */
+.project-description-box {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+  min-height: 50px;
+  user-select: none;
+  position: relative;
+  top: 10px;
+}
+
+.project-description-box h4 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #111;
+}
+
+.project-description-box p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Javier section (skills, summary, etc) */
+.javier-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+
+.javier-left {
+  flex: 1;
+  min-width: 280px;
+  padding: 20px;
+}
+
+.javier-left h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.javier-left h4 {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.javier-left p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.javier-icons a {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  color: #333;
+  transition: 0.3s;
+}
+
+.javier-icons a:hover {
+  color: #0077b5;
+}
+
+.resume-btn {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  background-color: #444;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.resume-btn:hover {
+  background-color: #222;
+}
+
+.javier-right {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Skill circles */
+.skill-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #333;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.color-0 { border: 6px solid #3b82f6; } 
+.color-1 { border: 6px solid #facc15; } 
+.color-2 { border: 6px solid #ec4899; } 
+.color-3 { border: 6px solid #10b981; } 
+.color-4 { border: 6px solid #06b6d4; }
+.color-5 { border: 6px solid #f87171; } 
+
+.circle-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.circle {
+  width: 120px;
+  height: 120px;
+  border: 6px solid;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Horizontal summary */
+.horizontal-summary {
+  background-color: rgb(203, 160, 125);
+  padding: 20px 40px;
+  margin-top: 50px;
+  border-top: 2px solid #e2e8f0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.summary-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  padding: 16px 24px;
+  text-align: center;
+  min-width: 180px;
+  color: black;
+}
+
+.summary-card h4,
+.summary-card p {
+  color: black;
+}
