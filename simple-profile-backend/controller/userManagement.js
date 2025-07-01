@@ -7,8 +7,13 @@ const profile = {
   interests: ['Reading', 'Gaming', 'Traveling'],
   doing: "Working on cool web projects.",
   contact: {
+<<<<<<< HEAD
     linkedin: '(NotAvailable)',
     phone: '(Not Available)',
+=======
+    linkedin: 'https://linkedin.com/in/yourprofile',
+    phone: '+1234567890',
+>>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
     email: 'youremail@example.com',
     github: 'https://github.com/yourusername'
   }

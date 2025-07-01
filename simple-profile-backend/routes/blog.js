@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /*const express = require('express');
+=======
+const express = require('express');
+>>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
 const router = express.Router();
 const blogController = require('../controller/Blog');
 
@@ -9,6 +13,7 @@ router.put('/:id', blogController.updateBlog);
 router.delete('/:id', blogController.deleteBlog);
 
 module.exports = router;
+<<<<<<< HEAD
 */
 
 //run buid
@@ -60,3 +65,5 @@ router.delete('/:id', blogController.deleteBlog);
 router.get('/:id', blogController.getBlogById);
 
 module.exports = router;
+=======
+>>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104

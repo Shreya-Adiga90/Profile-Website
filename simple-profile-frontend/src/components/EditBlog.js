@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+=======
+>>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
 import './BlogForm.css';
 
 function EditBlog() {
@@ -13,10 +16,19 @@ function EditBlog() {
     title: '',
     content: ''
   });
+<<<<<<< HEAD
   const [loading, setLoading] = useState(true);
 
   // Fetch existing blog data
   useEffect(() => {
+=======
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    console.log("Editing blog with ID:", id);  // Debugging line
+
+>>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
     axios.get(`http://localhost:5000/api/blogs/${id}`)
       .then(res => {
         setFormData({
@@ -31,6 +43,7 @@ function EditBlog() {
       });
   }, [id]);
 
+<<<<<<< HEAD
   // Quill toolbar config
   const modules = {
     toolbar: [
@@ -54,16 +67,26 @@ function EditBlog() {
     setFormData(prev => ({
       ...prev,
       content: value
+=======
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+>>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     axios.put(`http://localhost:5000/api/blogs/${id}`, formData, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
     })
+=======
+    axios.put(`http://localhost:5000/api/blogs/${id}`, formData)
+>>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
       .then(() => navigate('/blog'))
       .catch(err => console.error("Error updating blog:", err));
   };
@@ -71,6 +94,7 @@ function EditBlog() {
   if (loading) return <p>Loading...</p>;
 
   return (
+<<<<<<< HEAD
     <div
       style={{
         minHeight: '100vh',
@@ -126,6 +150,34 @@ function EditBlog() {
           <button type="submit" className="submit-btn">Update</button>
         </form>
       </div>
+=======
+    <div className="blog-form-container">
+      <h2>Edit Blog</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label>Title:</label><br />
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+            className="input-field"
+          />
+        </div>
+        <div className="form-group">
+          <label>Content:</label><br />
+          <textarea
+            name="content"
+            value={formData.content}
+            onChange={handleChange}
+            required
+            className="textarea-field"
+          />
+        </div>
+        <button type="submit" className="submit-btn">Update</button>
+      </form>
+>>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
     </div>
   );
 }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /*const Blog = require("../model/Blog");
+=======
+const Blog = require("../model/Blog");
+>>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
 
 // Create
 exports.createBlog = async (req, res) => {
@@ -54,6 +58,7 @@ exports.getBlogById = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+<<<<<<< HEAD
 */
 const Blog = require('../model/Blog'); // ✅ Your correct model path
 
@@ -130,3 +135,5 @@ exports.deleteBlog = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+=======
+>>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104

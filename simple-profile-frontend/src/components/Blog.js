@@ -11,6 +11,7 @@ const Blog = () => {
   }, []);
 
   return (
+<<<<<<< HEAD
     <div
       style={{
         display: 'flex',
@@ -60,6 +61,21 @@ const Blog = () => {
           ))
         )}
       </div>
+=======
+    <div style={{ padding: '20px' }}>
+      <h2>My Blog</h2>
+      {blogs.length === 0 ? (
+        <p>No Posts Yet</p>
+      ) : (
+        blogs.map((blog, index) => (
+          <div key={index} style={{ marginBottom: '20px' }}>
+            <h3>{blog.title}</h3>
+            <p>{blog.content}</p>
+            <small>{new Date(blog.date).toLocaleDateString()}</small>
+          </div>
+        ))
+      )}
+>>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
     </div>
   );
 };
