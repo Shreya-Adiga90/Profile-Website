@@ -1,0 +1,133 @@
+.blog-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.blog-form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.input-field,
+.textarea-field {
+  width: 95%;
+  padding: 12px 15px;
+  border: 1.8px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  resize: vertical;
+}
+
+.input-field:focus,
+.textarea-field:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.blog-container {
+  margin-top: 100px; /* Push content down */
+  padding: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.blog-form-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+.blog-form-container button {
+  padding: 8px 12px;
+}
+
+/*
+
+.top-button {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.top-button:hover {
+  background-color: #facc15;
+  transform: translateY(-2px);
+}
+*/
+
+.top-button {
+  background-color: white;
+  color: black;
+  padding: 10px 24px; /* Increased horizontal padding to even out size */
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+.top-button:hover {
+  background-color: #facc15;
+  transform: translateY(-2px);
+}
+
+/*   */
+.blog-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.blog-form-container button {
+  padding: 10px 20px;
+}
