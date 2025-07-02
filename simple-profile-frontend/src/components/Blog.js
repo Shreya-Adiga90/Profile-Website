@@ -11,17 +11,16 @@ const Blog = () => {
   }, []);
 
   return (
-<<<<<<< HEAD
     <div
       style={{
         display: 'flex',
-        height: '600px',        // ✅ Fixed height for entire blog section
+        height: '600px',        // Fixed height for entire blog section
         margin: '40px',
         borderRadius: '10px',
         overflow: 'hidden',
       }}
     >
-      {/* Sidebar (optional if needed) */}
+      {/* Sidebar */}
       <div
         style={{
           width: '250px',
@@ -39,13 +38,13 @@ const Blog = () => {
         ))}
       </div>
 
-      {/* Blog content area (scrollable if content is long) */}
+      {/* Blog content area */}
       <div
         style={{
           flexGrow: 1,
           backgroundColor: 'white',
           padding: '30px',
-          overflowY: 'auto',  // ✅ Only this section scrolls
+          overflowY: 'auto',
         }}
       >
         <h2>My Blog</h2>
@@ -55,27 +54,12 @@ const Blog = () => {
           blogs.map((blog, index) => (
             <div key={index} style={{ marginBottom: '20px' }}>
               <h3>{blog.title}</h3>
-              <p>{blog.content}</p>
+              <p dangerouslySetInnerHTML={{ __html: blog.content }} />
               <small>{new Date(blog.date).toLocaleDateString()}</small>
             </div>
           ))
         )}
       </div>
-=======
-    <div style={{ padding: '20px' }}>
-      <h2>My Blog</h2>
-      {blogs.length === 0 ? (
-        <p>No Posts Yet</p>
-      ) : (
-        blogs.map((blog, index) => (
-          <div key={index} style={{ marginBottom: '20px' }}>
-            <h3>{blog.title}</h3>
-            <p>{blog.content}</p>
-            <small>{new Date(blog.date).toLocaleDateString()}</small>
-          </div>
-        ))
-      )}
->>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
     </div>
   );
 };

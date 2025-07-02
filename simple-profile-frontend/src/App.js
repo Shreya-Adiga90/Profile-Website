@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Link, useLocation } from 'react-router-dom';
 import AppRoutes from './components/AppRoutes';
-<<<<<<< HEAD
 import 'react-quill/dist/quill.snow.css';
-=======
->>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
 import './App.css';
 
 function AppWrapper() {
@@ -26,11 +19,8 @@ function App() {
   const location = useLocation(); // Get current path
 
   useEffect(() => {
-<<<<<<< HEAD
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/profile`)
-=======
     axios.get('http://localhost:5000/api/profile')
->>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
       .then(res => setProfile(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -71,11 +61,7 @@ function App() {
   return (
     <div className="App">
       <nav className="navbar">
-<<<<<<< HEAD
-        
-=======
         {/* Hide Blog button when already on /blog */}
->>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
         {location.pathname !== '/blog' && (
           <Link to="/blog" className="nav-button">Blog</Link>
         )}

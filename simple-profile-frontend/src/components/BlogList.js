@@ -1,285 +1,3 @@
-<<<<<<< HEAD
-/*import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-=======
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
->>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
-import axios from "axios";
-
-function BlogList() {
-  const [blogs, setBlogs] = useState([]);
-  const [selectedBlog, setSelectedBlog] = useState(null);
-<<<<<<< HEAD
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [showAuthBox, setShowAuthBox] = useState(false);
-  const [password, setPassword] = useState("");
-
-  const navigate = useNavigate();
-=======
->>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/blogs")
-      .then((res) => {
-        setBlogs(res.data);
-        if (res.data.length > 0) setSelectedBlog(res.data[0]);
-      })
-      .catch((err) => {
-        console.error("Error fetching blogs:", err);
-      });
-<<<<<<< HEAD
-
-    const token = localStorage.getItem("token");
-    if (token) setIsAuthenticated(true);
-=======
->>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
-  }, []);
-
-  const deleteBlog = (id) => {
-    if (!window.confirm("Are you sure you want to delete this blog?")) return;
-
-    axios
-<<<<<<< HEAD
-      .delete(`http://localhost:5000/api/blogs/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-=======
-      .delete(`http://localhost:5000/api/blogs/${id}`)
->>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
-      .then(() => {
-        setBlogs((prev) => prev.filter((blog) => blog._id !== id));
-        if (selectedBlog?._id === id) setSelectedBlog(null);
-      })
-      .catch((err) => console.error("Error deleting blog:", err));
-  };
-
-<<<<<<< HEAD
-  const handleLogin = async () => {
-    try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
-        password,
-      });
-      localStorage.setItem("token", res.data.token);
-      setIsAuthenticated(true);
-      setShowAuthBox(false);
-      setPassword("");
-    } catch (err) {
-      alert("Incorrect password");
-    }
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsAuthenticated(false);
-  };
-
-  return (
-    <div
-      style={{
-        minHeight: "100vh",
-        backgroundImage: "url('/Blog-Background.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        padding: "20px",
-        boxSizing: "border-box",
-        position: "relative",
-      }}
-    >
-      
-      <div
-        style={{
-          position: "absolute",
-          top: "20px",
-          left: "20px",
-          display: "flex",
-          gap: "15px",
-        }}
-      >
-        <Link to="/" className="top-button">Home</Link>
-
-        {!isAuthenticated ? (
-          <button onClick={() => setShowAuthBox(true)} className="top-button">
-            User
-          </button>
-        ) : (
-          <button onClick={handleLogout} className="top-button">
-            Logout
-          </button>
-        )}
-      </div>
-
-      
-      {showAuthBox && (
-        <div
-          className="blog-form-container"
-          style={{
-            width: "360px",
-            padding: "20px",
-            position: "fixed",
-            top: "40%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 1000,
-            backgroundColor: "#f9f9f9",
-            borderRadius: "8px",
-            boxShadow: "0 0 10px rgba(0,0,0,0.2)",
-            textAlign: "center",
-          }}
-        >
-          <h3>Enter Password</h3>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="input-field"
-            style={{
-              width: "80%",
-              margin: "10px auto",
-              display: "block",
-              padding: "8px",
-              borderRadius: "5px",
-              border: "1px solid #ccc",
-            }}
-          />
-          <button onClick={handleLogin} className="submit-btn">Login</button>
-          <button
-            onClick={() => setShowAuthBox(false)}
-            className="submit-btn"
-            style={{ marginLeft: "10px" }}
-          >
-            Cancel
-          </button>
-        </div>
-      )}
-
-      
-      {!showAuthBox && (
-        <div
-          style={{
-            display: "flex",
-            marginTop: "100px",
-            maxHeight: "80vh",
-            overflow: "hidden",
-            borderRadius: "10px",
-          }}
-        >
-          
-          <div
-            style={{
-              width: "300px",
-              backgroundColor: "rgba(0,0,0,0.7)",
-              padding: "15px",
-              borderRadius: "10px",
-              color: "white",
-              overflowY: "auto",
-              flexShrink: 0,
-            }}
-          >
-            {isAuthenticated && (
-              <Link
-                to="/add"
-                style={{
-                  display: "block",
-                  backgroundColor: "#facc15",
-                  color: "#000",
-                  fontWeight: "bold",
-                  padding: "10px",
-                  borderRadius: "6px",
-                  textAlign: "center",
-                  textDecoration: "none",
-                  marginBottom: "20px",
-                }}
-              >
-                + Add New Blog
-              </Link>
-            )}
-
-            <h3>Blogs</h3>
-            {blogs.length === 0 ? (
-              <p>No blogs found</p>
-            ) : (
-              blogs.map((blog) => (
-                <div
-                  key={blog._id}
-                  onClick={() => setSelectedBlog(blog)}
-                  style={{
-                    padding: "8px",
-                    margin: "4px 0",
-                    backgroundColor:
-                      selectedBlog?._id === blog._id ? "#facc15" : "transparent",
-                    color:
-                      selectedBlog?._id === blog._id ? "#000" : "white",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                  }}
-                >
-                  {blog.title}
-                </div>
-              ))
-            )}
-          </div>
-
-          
-          <div
-            style={{
-              flex: 1,
-              padding: "25px",
-              backgroundColor: "white",
-              borderRadius: "10px",
-              overflowY: "auto",
-              overflowX: "hidden",
-              marginLeft: "20px", // GAP between boxes
-            }}
-          >
-            {selectedBlog ? (
-              <div>
-                <h2>{selectedBlog.title}</h2>
-                <div
-                  style={{
-                    whiteSpace: "pre-wrap",
-                    overflowWrap: "break-word",
-                  }}
-                  dangerouslySetInnerHTML={{ __html: selectedBlog.content }}
-                />
-                {isAuthenticated && (
-                  <div style={{ marginTop: "20px" }}>
-                    <Link to={`/edit/${selectedBlog._id}`}>
-                      <button style={{ marginRight: "10px" }}>Edit</button>
-                    </Link>
-                    <button
-                      onClick={() => deleteBlog(selectedBlog._id)}
-                      style={{
-                        backgroundColor: "red",
-                        color: "white",
-                        border: "none",
-                        padding: "8px 12px",
-                        borderRadius: "4px",
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <p style={{ color: "black" }}>
-                Select a blog from the left to see details.
-              </p>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-export default BlogList;
-*/
-
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -296,7 +14,6 @@ function BlogList() {
     axios
       .get("http://localhost:5000/api/blogs")
       .then((res) => {
-        console.log("🧪 Blogs fetched from backend:", res.data); // ✅ Log blogs array
         setBlogs(res.data);
       })
       .catch((err) => console.error("Error fetching blogs:", err));
@@ -337,8 +54,6 @@ function BlogList() {
     setIsAuthenticated(false);
   };
 
-=======
->>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
   return (
     <div
       style={{
@@ -361,9 +76,7 @@ function BlogList() {
           gap: "15px",
         }}
       >
-<<<<<<< HEAD
         <Link to="/" className="top-button">Home</Link>
-
         {!isAuthenticated ? (
           <button onClick={() => setShowAuthBox(true)} className="top-button">
             User
@@ -465,62 +178,59 @@ function BlogList() {
             {blogs.length === 0 ? (
               <p>No blogs found</p>
             ) : (
-              blogs.map((blog) => {
-                console.log("🔎 Individual blog:", blog); // ✅ Log individual blog
-                return (
-                  <div key={blog._id} style={{ marginBottom: "10px" }}>
-                    {blog.slug ? (
-                      <Link
-                        to={`/blog/slug/${blog.slug}`}
-                        style={{
-                          display: "block",
-                          padding: "8px",
-                          backgroundColor: "#facc15",
-                          color: "#000",
-                          borderRadius: "4px",
-                          textDecoration: "none",
-                          fontWeight: "bold",
-                          textAlign: "center",
-                        }}
-                      >
-                        {blog.title}
+              blogs.map((blog) => (
+                <div key={blog._id} style={{ marginBottom: "10px" }}>
+                  {blog.slug ? (
+                    <Link
+                      to={`/blog/slug/${blog.slug}`}
+                      style={{
+                        display: "block",
+                        padding: "8px",
+                        backgroundColor: "#facc15",
+                        color: "#000",
+                        borderRadius: "4px",
+                        textDecoration: "none",
+                        fontWeight: "bold",
+                        textAlign: "center",
+                      }}
+                    >
+                      {blog.title}
+                    </Link>
+                  ) : (
+                    <span
+                      style={{
+                        display: "block",
+                        padding: "8px",
+                        backgroundColor: "gray",
+                        color: "white",
+                        borderRadius: "4px",
+                        textAlign: "center",
+                      }}
+                    >
+                      {blog.title} (missing slug)
+                    </span>
+                  )}
+                  {isAuthenticated && (
+                    <div style={{ textAlign: "center", marginTop: "4px" }}>
+                      <Link to={`/edit/${blog._id}`}>
+                        <button style={{ marginRight: "8px" }}>Edit</button>
                       </Link>
-                    ) : (
-                      <span
+                      <button
+                        onClick={() => deleteBlog(blog._id)}
                         style={{
-                          display: "block",
-                          padding: "8px",
-                          backgroundColor: "gray",
+                          backgroundColor: "red",
                           color: "white",
+                          border: "none",
+                          padding: "6px 10px",
                           borderRadius: "4px",
-                          textAlign: "center",
                         }}
                       >
-                        {blog.title} (missing slug)
-                      </span>
-                    )}
-                    {isAuthenticated && (
-                      <div style={{ textAlign: "center", marginTop: "4px" }}>
-                        <Link to={`/edit/${blog._id}`}>
-                          <button style={{ marginRight: "8px" }}>Edit</button>
-                        </Link>
-                        <button
-                          onClick={() => deleteBlog(blog._id)}
-                          style={{
-                            backgroundColor: "red",
-                            color: "white",
-                            border: "none",
-                            padding: "6px 10px",
-                            borderRadius: "4px",
-                          }}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                );
-              })
+                        Delete
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))
             )}
           </div>
 
@@ -546,122 +256,9 @@ function BlogList() {
           </div>
         </div>
       )}
-=======
-        <Link to="/" style={buttonStyle}>Home</Link>
-        {/*<Link to="/blog" style={buttonStyle}>Blog</Link>*/}
-      </div>
-
-      {/* Main Content */}
-      <div style={{ display: "flex", marginTop: "100px", gap: "20px" }}>
-        {/* Blog Sidebar */}
-        <div
-          style={{
-            width: "300px",
-            backgroundColor: "rgba(0,0,0,0.7)",
-            padding: "15px",
-            borderRadius: "10px",
-            color: "white",
-          }}
-        >
-          <Link
-            to="/add"
-            style={{
-              display: "block",
-              backgroundColor: "#facc15",
-              color: "#000",
-              fontWeight: "bold",
-              padding: "10px",
-              borderRadius: "6px",
-              textAlign: "center",
-              textDecoration: "none",
-              marginBottom: "20px",
-            }}
-          >
-            + Add New Blog
-          </Link>
-
-          <h3>Blogs</h3>
-          {blogs.length === 0 ? (
-            <p>No blogs found</p>
-          ) : (
-            blogs.map((blog) => (
-              <div
-                key={blog._id}
-                onClick={() => setSelectedBlog(blog)}
-                style={{
-                  padding: "8px",
-                  margin: "4px 0",
-                  backgroundColor:
-                    selectedBlog?._id === blog._id ? "#facc15" : "transparent",
-                  color:
-                    selectedBlog?._id === blog._id ? "#000" : "white",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                }}
-              >
-                {blog.title}
-              </div>
-            ))
-          )}
-        </div>
-
-        {/* Blog Content Display */}
-        <div style={{ flexGrow: 1, color: "black" }}>
-          {selectedBlog ? (
-            <div
-              style={{
-                backgroundColor: "white",
-                padding: "25px",
-                borderRadius: "10px",
-                boxShadow: "0 0 10px rgba(0,0,0,0.3)",
-              }}
-            >
-              <h2>{selectedBlog.title}</h2>
-              <p style={{ whiteSpace: "pre-wrap" }}>{selectedBlog.content}</p>
-
-              <div style={{ marginTop: "20px" }}>
-                <Link to={`/edit/${selectedBlog._id}`}>
-                  <button style={{ marginRight: "10px" }}>Edit</button>
-                </Link>
-                <button
-                  onClick={() => deleteBlog(selectedBlog._id)}
-                  style={{
-                    backgroundColor: "red",
-                    color: "white",
-                    border: "none",
-                    padding: "8px 12px",
-                    borderRadius: "4px",
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ) : (
-            <p style={{ color: "white" }}>
-              Select a blog from the left to see details.
-            </p>
-          )}
-        </div>
-      </div>
->>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
     </div>
   );
 }
 
-<<<<<<< HEAD
 export default BlogList;
 
-=======
-const buttonStyle = {
-  backgroundColor: "#fff",
-  color: "#000",
-  padding: "10px 20px",
-  borderRadius: "6px",
-  fontWeight: "bold",
-  textDecoration: "none",
-  boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
-};
-
-export default BlogList;
->>>>>>> ae2759d80d34be3598a89db82fdc1bfc4f3d1104
